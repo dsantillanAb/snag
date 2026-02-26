@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import StatsSection from "@/components/stats-section";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
     ZapIcon,
     GlobeIcon,
@@ -141,12 +141,18 @@ const jsonResponse = `{
 export default function Home() {
     const [displayedText, setDisplayedText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
+    const terminalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (currentIndex < jsonResponse.length) {
             const timeout = setTimeout(() => {
                 setDisplayedText(prev => prev + jsonResponse[currentIndex]);
                 setCurrentIndex(prev => prev + 1);
+                
+                // Auto-scroll al final
+                if (terminalRef.current) {
+                    terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+                }
             }, 15); // Velocidad de escritura
             return () => clearTimeout(timeout);
         }
@@ -212,7 +218,7 @@ export default function Home() {
                             <span className="h-3 w-3 rounded-full bg-green-500/80" />
                             <span className="ml-3 text-xs text-zinc-500 font-mono">GET https://snag.dploy.lol/api/v1/endpoints/scrape/bancentral-cmch</span>
                         </div>
-                        <div className="p-4 font-mono text-xs md:text-sm text-left overflow-auto bg-[#0a0a0a] h-[280px] md:h-[300px]">
+                        <div ref={terminalRef} className="p-4 font-mono text-xs md:text-sm text-left overflow-auto bg-[#0a0a0a] h-[280px] md:h-[300px] scrollbar-hide">
                             <pre className="text-emerald-400 leading-relaxed">
                                 {displayedText}
                                 <span className="animate-pulse">▊</span>

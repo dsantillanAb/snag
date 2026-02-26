@@ -139,7 +139,8 @@ async def add_credits_to_user(
         raise HTTPException(status_code=403, detail="Admin access required")
 
     # Get target user
-    result = await db.execute(select(User).where(User.id == request.user_id))
+    from uuid import UUID
+    result = await db.execute(select(User).where(User.id == UUID(request.user_id)))
     user = result.scalar_one_or_none()
 
     if not user:

@@ -99,7 +99,7 @@ python migrate_postgres.py
 This will:
 - Add credits columns to the database
 - Give $30 USD to all existing users
-- Set `dsantillanAb` as the super administrator
+
 
 ### 5. Frontend setup
 
@@ -178,7 +178,7 @@ Users can monitor their usage through the profile page:
 
 ### Admin Features
 
-The super administrator (`dsantillanAb`) has access to:
+The super administrator  has access to:
 - View all users and their usage
 - Add credits to any user
 - Monitor system-wide statistics

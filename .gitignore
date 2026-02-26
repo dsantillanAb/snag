@@ -1,0 +1,55 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+*.sqlite3
+*.db
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# ── Environment / Secrets (NEVER commit these) ────────────────────────────────
+.env
+.env.*
+!.env.example        # only the example is allowed
+backend/.env
+frontend/.env
+frontend/.env.local
+frontend/.env*.local
+
+# ── Node / Next.js ────────────────────────────────────────────────────────────
+node_modules/
+.next/
+frontend/node_modules/
+frontend/.next/
+*.tsbuildinfo
+frontend/out/
+
+# ── Database local files ──────────────────────────────────────────────────────
+backend/snag.db
+backend/migrate_data.py
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Docker volumes ────────────────────────────────────────────────────────────
+postgres_data/
+redis_data/
